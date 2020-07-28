@@ -1,0 +1,45 @@
+Write a SQL query to get the second highest salary from the Employee table.
+
++----+--------+
+| Id | Salary |
++----+--------+
+| 1  | 100    |
+| 2  | 200    |
+| 3  | 300    |
++----+--------+
+
+For example, given the above Employee table, the query should return 200 as the second highest salary. If there is no second highest salary, then the query should return null.
+
++---------------------+
+| SecondHighestSalary |
++---------------------+
+| 200                 |
++---------------------+
+
+==> 
+
+a. SELECT MAX(Salary) AS SecondHighestSalary 
+   FROM Employee
+   WHERE Salary NOT IN (SELECT MAX(Salary) FROM Employee)
+
+
+The inner query calculates the maximum salary for example: 300 from Employee. The Outer query is a form of SQL except which ignores the highest salary computed by the inner query and hence 
+echoes 200
+
+
+b. Another way to do it is,
+
+SELECT name, e1.salary 
+FROM #Employee e1
+WHERE N - 1 = (SELECT COUNT(DISTINCT salary) FROM #Employee e2
+WHERE e1.salary > e2.salary)
+
+
+This uses the below reasoning. 
+
+For Highest salary, no salaries are higher.
+For second highest salary, 1 salary is higher
+For third highest salary, 2 salaries are higher.
+For N highest salary, N - 1 salaries are higher.
+
+
