@@ -1,40 +1,4 @@
-Mary is a teacher in a middle school and she has a table seat storing students' names and their corresponding seat ids.
-
-The column id is continuous increment.
- 
-
-Mary wants to change seats for the adjacent students.
- 
-
-Can you write a SQL query to output the result for Mary?
- 
-
-+---------+---------+
-|    id   | student |
-+---------+---------+
-|    1    | Abbot   |
-|    2    | Doris   |
-|    3    | Emerson |
-|    4    | Green   |
-|    5    | Jeames  |
-+---------+---------+
-For the sample input, the output is:
- 
-
-+---------+---------+
-|    id   | student |
-+---------+---------+
-|    1    | Doris   |
-|    2    | Abbot   |
-|    3    | Green   |
-|    4    | Emerson |
-|    5    | Jeames  |
-+---------+---------+
-Note:
-If the number of students is odd, there is no need to change the last one's seat.
-
-
-==>
+=>
 
 SELECT
     (CASE
@@ -51,6 +15,7 @@ FROM
         seat) AS seat_counts
 ORDER BY id ASC;
 
+/*
 The CASE construct
     i. Adds 1 to odd value of primary key if its not equal to the count of the rows.
     ii. if count is equal to the value of the value of the primary key, its the last odd row and must be skipped. Therefore it returns id itself.
@@ -80,3 +45,5 @@ The ORDER by then does the remaining trick.
 |    4    | Green   |
 |    5    | Jeames  |
 +---------+---------+
+
+*/

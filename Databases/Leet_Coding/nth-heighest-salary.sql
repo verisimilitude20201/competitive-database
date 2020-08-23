@@ -1,22 +1,5 @@
-Write a SQL query to get the nth highest salary from the Employee table.
 
-+----+--------+
-| Id | Salary |
-+----+--------+
-| 1  | 100    |
-| 2  | 200    |
-| 3  | 300    |
-+----+--------+
-
-For example, given the above Employee table, the nth highest salary where n = 2 is 200. If there is no nth highest salary, then the query should return null.
-
-+------------------------+
-| getNthHighestSalary(2) |
-+------------------------+
-| 200                    |
-+------------------------+
-
-===> 
+/* ===> */ 
 
 a. CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
 BEGIN
@@ -31,14 +14,14 @@ BEGIN
   );
 END
 
-The main clause here is LIMIT and OFFSET
+/*The main clause here is LIMIT and OFFSET
 
 LIMIT -> Limits the resultset to just one row.
 OFFSET -> Skips over to just display the Nth row. The Union just does a plain union with NULL in case the first part of the query does not return anything.
 
 
 b. Another way to do this is the below sub-query
-
+*/
 CREATE FUNCTION getNthHighestSalary(N INT) RETURNS INT
 BEGIN
   SET N = N - 1;
@@ -50,4 +33,4 @@ BEGIN
   );
 END
 
-For each emp1.Salary, the correlated inner sub-query tries to find the (N - 1) highest salary and returns the count. 
+/* For each emp1.Salary, the correlated inner sub-query tries to find the (N - 1) highest salary and returns the count.  */
