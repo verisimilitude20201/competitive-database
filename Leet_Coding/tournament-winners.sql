@@ -57,7 +57,8 @@ INNER JOIN sum_scores ON Players.player_id = sum_scores.player_id
 GROUP BY group_id
 
 
-3. Finally, we JOIN players again with sum_scores. We select only those groups whose score is equal to the maximum score in that group.  
+3. Finally, we JOIN players again with sum_scores. We select only those groups whose score is equal to the maximum score in that group.  The final group by on player_id is essential 
+because in case there is a tie between scores, we select the lowest player_id.
 
 SELECT group_id, MIN(Players.player_id) AS player_id 
 FROM Players 
